@@ -1,4 +1,5 @@
 <?php
+//inclui a conexão '$conn' do arquivo 'conexão.php'
 require("conexao.php");
 
 /*{
@@ -10,7 +11,7 @@ $xmlStr=str_replace("&",'&amp;',$xmlStr);
 return $xmlStr;
 }*/
 
-// Select all the rows in the markers table
+//seleciona todas as linhas da tabela 'cadastro_lixo'
 $query = "SELECT * FROM cadastro_lixo";
 $result = mysqli_query($conn, $query);
 if (!$result) {
@@ -23,8 +24,10 @@ header("Content-type: text/xml");
 echo "<?xml version='1.0' ?>";
 echo '<markers>';
 $ind=0;
+
 // Iterate through the rows, printing XML nodes for each
 while ($row = mysqli_fetch_assoc($result)){
+  
   // Add to XML document node
   echo '<marker ';
   echo 'lat="' . $row['latitude'] . '" ';

@@ -1,3 +1,4 @@
+//formulário simples para verificar se os campos foram preenchidos
 function validaCampo(){
 
 		if(document.dados.latitude.value=="")

@@ -1,5 +1,5 @@
 <?php
-  
+  //inclui a conexão '$conn' do arquivo 'conexão.php'
   include_once('conexao.php');	
 
   //Declaração de variáveis
@@ -19,10 +19,13 @@
   echo "bairro: $bairro <br>";
   echo "cep: $cep <br>";*/
 
+  //query para inserir no banco de dados
   $sql_query = "INSERT INTO cadastro_lixo(latitude, longitude, logradouro, numero, bairro, cidade, cep, estado) VALUES ('$latitude','$longitude','$logradouro','$numero','$bairro', 'Estância', '$cep', 'Sergipe')";
-
+  
+  //cadastra query no banco de dados
   $resultado = mysqli_query($conn, $sql_query);
 
+  //redireciona o navegador para 'view.php'
   if(mysql_insert_id($conn)){
     header("Location: view.php");
   }else{

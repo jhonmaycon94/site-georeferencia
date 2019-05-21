@@ -8,6 +8,7 @@
       document.getElementById('map'), {zoom: 12, center: estancia});
   	// The marker, positioned at Estância
   }
+     //add marcador
      function addMarker(location) {
         var marker = new google.maps.Marker({position: location, map: map});
       }  

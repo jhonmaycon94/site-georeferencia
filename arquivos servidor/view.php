@@ -24,6 +24,7 @@
     <div id="map"></div>
 
     <script>
+        //inicia mapa centrado em Estância
         function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: new google.maps.LatLng(-11.269415, -37.437571),
@@ -33,27 +34,21 @@
 
           // Change this depending on the name of your PHP or XML file
           downloadUrl('recebeDados.php', function(data) {
-            var xml = data.responseXML;
-            //console.log(xml);
-            var markers = xml.documentElement.getElementsByTagName('marker');
-            //console.log(markers);
+            
+            //pega informações do XML e armazena nas respectivas variáveis
+            var xml = data.responseXML;            
             Array.prototype.forEach.call(markers, function(markerElem) {
-              var logradouro = markerElem.getAttribute('logradouro');
-              //console.log(logradouro);
-              var numero = markerElem.getAttribute('num');
-              //console.log(numero);
-              var bairro = markerElem.getAttribute('bairro');
-              //console.log(bairro);
-              var cidade = markerElem.getAttribute('cidade');
-              //console.log(cidade)
+              var logradouro = markerElem.getAttribute('logradouro');              
+              var numero = markerElem.getAttribute('num');              
+              var bairro = markerElem.getAttribute('bairro');              
+              var cidade = markerElem.getAttribute('cidade');              
               var cep = markerElem.getAttribute('cep');
-              var estado = markerElem.getAttribute('estado');
-              //console.log(estado);
+              var estado = markerElem.getAttribute('estado');              
               var point = new google.maps.LatLng(
                   parseFloat(markerElem.getAttribute('lat')),
-                  parseFloat(markerElem.getAttribute('lng')));
-              //console.log(point);
+                  parseFloat(markerElem.getAttribute('lng')));              
 
+              //define informações para as infoWindows dos marcadores
               var infowincontent = document.createElement('div');
               var strong = document.createElement('strong');
               strong.textContent = logradouro+", "+numero;
@@ -78,11 +73,13 @@
               var text = document.createElement('text');
               text.textContent = estado;
               infowincontent.appendChild(text);
-        
+
+              //cria marcador
               var marker = new google.maps.Marker({
                 map: map,
                 position: point
               });
+              //define o que acontecerá após o evento 'click' sobre os marcadores              
               marker.addListener('click', function() {
                 infoWindow.setContent(infowincontent);
                 infoWindow.open(map, marker);
