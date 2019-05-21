@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>cadastro do lixo</title>
+	
+	<meta charset="utf-8">
+	
+	<!-- carregando os estilos-->
+	<link rel="stylesheet" type="text/css" href="_css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="_css/cadastro.css">
+	
+	<link rel="icon" type="image/png" href="_imagens/brasao-prefeitura.png">
+	
+	<script type="text/javascript" src="_js/validaCampo.js"></script>
+
+</head>
+<body>
+	<div id="principal">
+
+	<!-- cabeçalho-->	
+	<header id="cabecalho">
+		<img src="_imagens/brasao-prefeitura.png" alt="Brasão do portal da prefeitura de Estância">
+		<h1>Orgão de Saneamento Ambiental</h1> 
+		<p id="utf_prefeitura"></p>
+		<nav id="menu">
+			<ul>
+				<li><a href="home.html">Página Inicial</a></li>
+				<li><a href="cadastro.html">Cadastro</a></li>
+				<li><a href="http:127.0.0.1/view.php">Visualização</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- mapa-->
+	<div id="map"></div>
+   	  <script src="_js/carregaMapa.js"></script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdXuxCij3QqLOBXD3037howmfqaH2cXWE&callback=initMap">
+      </script>
+	
+	<!--formulário de cadastro-->
+	<form name="dados" action="http:127.0.0.1/processa.php" method="POST">
+	<fieldset id="cadastro-lixo"><legend>Cadastro Lixo</legend>
+
+		<!-- mensagem de aviso -->
+	<p id="aviso">Os campos com <em>*</em> são obrigatórios!</p>
+		
+		<!--campo de coordenadas-->
+		<div>
+			<label for="latitude" class="obrigatorio">Latitude:</label>
+			<input type="text" id="latitude" size="10" name="latitude" >
+			<label for="longitude" class="obrigatorio">Longitude:</label>
+			<input type="text" id="longitude" size="10" name="longitude" ><br><br>
+		</div>
+
+		<!--upload de foto-->
+		<div>
+			<label for="foto-lixo" class="obrigatorio">Foto do lixo:</label>
+			<input type="file" id="files" name="files[]" multiple/>
+			<output id="list"></output><br><br>
+			<!--<script type="text/javascript">
+				 function readSingleFile(e) {
+				  var file = e.target.files[0];
+				  if (!file) {
+				    return;
+				  }
+				  var reader = new FileReader();
+				  reader.onload = function(e) {
+				    var contents = e.target.result;
+				    displayContents(contents);
+				  };
+				  reader.readAsText(file);
+				}
+
+				/*function displayContents(contents) {
+				  var element = document.getElementById('file-content');
+				  element.textContent = contents;
+				}
+
+				document.getElementById('file-input')
+				  .addEventListener('change', readSingleFile, false);*/
+			</script>-->
+		</div>
+
+		<!-- logradouro -->
+		<div>
+			<label for="logradouro" class="obrigatorio">Logradouro:</label>
+			<input type="text" name="logradouro" id="logradouro" size="30" maxlength="50" placeholder="Rua, Avenida, Travessa..."><br><br>
+		</div>
+
+		<!--numero-->
+		<div>
+			<label for="numero">Número:</label>
+			<input type="text" name="numero" id="numero" maxlength="10" size="5"><br><br>
+		</div>
+
+		<!-- Bairro -->
+		<div>
+			<label for="bairro" class="obrigatorio">Bairro:</label>
+			<input type="text" name="bairro" id="bairro" size="20" maxlength="30"><br><br>
+		</div>
+
+		<!-- CEP -->
+		<div>
+			<label for="cep">CEP:</label>
+			<input type="text" name="cep" id="cep" maxlength="20" size="10"><br><br>
+		</div>
+
+		<!-- Cidade -->
+		<div>
+			<label for="cidade">Cidade:</label>
+				<select id="cidade" class="unico">
+					<option>Estância</option>
+				</select><br><br>
+		</div>
+
+		<!-- Estado -->
+		<div>
+			<label for="estado">Estado:</label>
+			<select id="estado" class="unico">
+				    <option>Sergipe</option>
+			</select><br><br>
+		</div>
+
+		<!-- campo de descrição-->
+		<div>
+			<label for="descricao" id="lb_textArea">Descrição:</label>
+			<textarea id="descricao" rows="5" cols="35" placeholder="Descreva aqui sobre a situação do lixo"></textarea><br><br>
+		</div>
+
+		<!-- botão -->
+		<div class="button">
+			<button type="submit" onclick="return validaCampo()">Cadastrar</button>
+		</div>
+
+	</fieldset>
+	</form>
+
+	<!--rodapé-->
+	<footer id="rodape">
+		<p>&copy; Copyright 2019 - by Jhon Maycon</p> 
+	</footer>
+
+</div>
+</html>

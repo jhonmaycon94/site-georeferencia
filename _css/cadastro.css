@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+#map {
+      	margin-top: 50px;
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+
+form{
+	padding: 10px;
+}
+
+legend{
+	font-weight: bold;
+	color: #999999;
+}
+
+form div{
+	margin: 10px;
+}
+
+form label{
+	font-family: sans-serif;
+	font-weight: bold;
+	color: rgba(0,0,0,.9);
+	text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+	margin-right: 15px;
+}
+
+form label.obrigatorio:before{
+	content: " *";
+	color: red;
+	margin: 1px;
+}
+
+form div input#latitude{
+	margin-right: 40px;
+}
+
+
+button{
+	position: relative;
+	right: -400px;
+	font-weight: bolder;
+	font-size: 16pt;
+	font-family: sans-serif;
+	width: 150px;
+	height: 40px;
+}
+
+p#aviso{
+	color: red;
+	font-style: italic;
+	font-size: 10pt;
+}
+
+select.unico{
+	background-color: #dddddd;
+}
+
+#lb_textArea{
+	position: relative;	
+	top: -30px;
+}
