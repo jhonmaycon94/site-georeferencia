@@ -1,6 +1,6 @@
 <?php
   //inclui a conexão '$conn' do arquivo 'conexão.php'
-  include_once('conexao.php');	
+  include_once('conexao.php');  
 
   //Declaração de variáveis
   $latitude = filter_input(INPUT_POST, 'latitude');
@@ -9,26 +9,14 @@
   $numero = filter_input(INPUT_POST, 'numero');
   $bairro = filter_input(INPUT_POST, 'bairro');
   $cep = filter_input(INPUT_POST, 'cep');
-
-  //teste para checar os valores que as variáveis estão recebendo!
-  
-  /*echo "latitude: $latitude <br>";
-  echo "longitude: $longitude <br>";
-  echo "rua: $logradouro <br>";
-  echo "numero: $numero <br>";
-  echo "bairro: $bairro <br>";
-  echo "cep: $cep <br>";*/
+  $descricao = filter_input(INPUT_POST, 'descricao');
 
   //query para inserir no banco de dados
-  $sql_query = "INSERT INTO cadastro_lixo(latitude, longitude, logradouro, numero, bairro, cidade, cep, estado) VALUES ('$latitude','$longitude','$logradouro','$numero','$bairro', 'Estância', '$cep', 'Sergipe')";
+  $sql_query = "INSERT INTO cadastro_lixo(latitude, longitude, logradouro, numero, bairro, cidade, cep, estado, descricao) VALUES ('$latitude','$longitude','$logradouro','$numero','$bairro', 'Estância', '$cep', 'Sergipe', '$descricao')";
   
   //cadastra query no banco de dados
   $resultado = mysqli_query($conn, $sql_query);
 
-  //redireciona o navegador para 'view.php'
-  if(mysql_insert_id($conn)){
-    header("Location: view.php");
-  }else{
-    header("Location: view.php");
-  }
+ //redireciona página para view.php
+  header('Location: view.php');
 ?>
