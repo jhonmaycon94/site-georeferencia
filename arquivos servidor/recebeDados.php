@@ -38,6 +38,7 @@ while ($row = mysqli_fetch_assoc($result)){
   echo 'cidade="' . $row['cidade'] . '" ';
   echo 'cep="' . $row['cep'] . '" ';
   echo 'estado="' . $row['estado'] . '" ';
+  echo 'descricao="' . $row['descricao'] . '" ';
   echo '/>';
   $ind = $ind + 1;
 }

@@ -38,20 +38,27 @@
             //pega informações do XML e armazena nas respectivas variáveis
             var xml = data.responseXML;
             var markers = xml.documentElement.getElementsByTagName('marker');
-                        
+             
             Array.prototype.forEach.call(markers, function(markerElem) {
               var logradouro = markerElem.getAttribute('logradouro');              
               var numero = markerElem.getAttribute('num');              
               var bairro = markerElem.getAttribute('bairro');              
               var cidade = markerElem.getAttribute('cidade');              
               var cep = markerElem.getAttribute('cep');
-              var estado = markerElem.getAttribute('estado');              
+              var estado = markerElem.getAttribute('estado');
+              var descricao = markerElem.getAttribute('descricao');              
               var point = new google.maps.LatLng(
                   parseFloat(markerElem.getAttribute('lat')),
                   parseFloat(markerElem.getAttribute('lng')));              
 
               //define informações para as infoWindows dos marcadores
               var infowincontent = document.createElement('div');
+              var text = document.createElement('text');
+              text.textContent = descricao;
+              infowincontent.appendChild(text);
+              infowincontent.appendChild(document.createElement('br'));
+              infowincontent.appendChild(document.createElement('br'));
+
               var strong = document.createElement('strong');
               strong.textContent = logradouro+", "+numero;
               infowincontent.appendChild(strong);
@@ -75,7 +82,7 @@
               var text = document.createElement('text');
               text.textContent = estado;
               infowincontent.appendChild(text);
-
+              
               //cria marcador
               var marker = new google.maps.Marker({
                 map: map,
