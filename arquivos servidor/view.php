@@ -37,7 +37,7 @@
             
             //pega informações do XML e armazena nas respectivas variáveis
             var xml = data.responseXML;            
-            Array.prototype.forEach.call(markers, function(markerElem) {
+            Array.prototype.forEach.call("markers", function(markerElem) {
               var logradouro = markerElem.getAttribute('logradouro');              
               var numero = markerElem.getAttribute('num');              
               var bairro = markerElem.getAttribute('bairro');              
