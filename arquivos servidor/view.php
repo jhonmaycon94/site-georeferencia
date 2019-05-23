@@ -36,7 +36,9 @@
           downloadUrl('recebeDados.php', function(data) {
             
             //pega informações do XML e armazena nas respectivas variáveis
-            var xml = data.responseXML;            
+            var xml = data.responseXML;
+            var markers = xml.documentElement.getElementsByTagName('marker');
+                        
             Array.prototype.forEach.call(markers, function(markerElem) {
               var logradouro = markerElem.getAttribute('logradouro');              
               var numero = markerElem.getAttribute('num');              
