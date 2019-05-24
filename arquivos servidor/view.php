@@ -46,13 +46,19 @@
               var cidade = markerElem.getAttribute('cidade');              
               var cep = markerElem.getAttribute('cep');
               var estado = markerElem.getAttribute('estado');
-              var descricao = markerElem.getAttribute('descricao');              
+              var descricao = markerElem.getAttribute('descricao');
+              var foto_caminho = markerElem.getAttribute('foto');             
               var point = new google.maps.LatLng(
                   parseFloat(markerElem.getAttribute('lat')),
                   parseFloat(markerElem.getAttribute('lng')));              
 
               //define informações para as infoWindows dos marcadores
               var infowincontent = document.createElement('div');
+              var foto = document.createElement('img');
+              foto.src = foto_caminho;
+              infowincontent.appendChild(foto);
+              infowincontent.appendChild(document.createElement('br'));
+
               var text = document.createElement('text');
               text.textContent = descricao;
               infowincontent.appendChild(text);

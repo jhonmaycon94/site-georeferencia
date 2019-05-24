@@ -17,9 +17,10 @@
   $bairro = filter_input(INPUT_POST, 'bairro');
   $cep = filter_input(INPUT_POST, 'cep');
   $descricao = filter_input(INPUT_POST, 'descricao');
+  $foto_path = "imagens/$name";
 
   //query para inserir no banco de dados
-  $sql_query = "INSERT INTO cadastro_lixo(latitude, longitude, logradouro, numero, bairro, cidade, cep, estado, descricao) VALUES ('$latitude','$longitude','$logradouro','$numero','$bairro', 'Estância', '$cep', 'Sergipe', '$descricao')";
+  $sql_query = "INSERT INTO cadastro_lixo(latitude, longitude, logradouro, numero, bairro, cidade, cep, estado, descricao, foto) VALUES ('$latitude','$longitude','$logradouro','$numero','$bairro', 'Estância', '$cep', 'Sergipe', '$descricao','$foto_path')";
   
   //cadastra query no banco de dados
   $resultado = mysqli_query($conn, $sql_query);

@@ -1,4 +1,5 @@
 <?php
+
 //inclui a conexão '$conn' do arquivo 'conexão.php'
 require("conexao.php");
 
@@ -39,6 +40,7 @@ while ($row = mysqli_fetch_assoc($result)){
   echo 'cep="' . $row['cep'] . '" ';
   echo 'estado="' . $row['estado'] . '" ';
   echo 'descricao="' . $row['descricao'] . '" ';
+  echo 'foto="' . $row['foto'] . '" ';
   echo '/>';
   $ind = $ind + 1;
 }
