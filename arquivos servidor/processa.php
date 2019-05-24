@@ -1,6 +1,6 @@
 <?php
   //inclui a conexão '$conn' do arquivo 'conexão.php'
-  include_once('conexao.php');  
+  include_once('conexao.php');
 
   //Declaração de variáveis
   $latitude = filter_input(INPUT_POST, 'latitude');
@@ -16,6 +16,12 @@
   
   //cadastra query no banco de dados
   $resultado = mysqli_query($conn, $sql_query);
+
+  $name = $_FILES['foto_lixo']['name'];
+  $temp = $_FILES['foto_lixo']['tmp_name'];
+  $type = $_FILES['foto_lixo']['type'];
+
+  move_uploaded_file($temp, "imagens/$name");
 
  //redireciona página para view.php
   header('Location: view.php');

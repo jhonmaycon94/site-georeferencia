@@ -39,7 +39,7 @@
       </script>
 	
 	<!--formulário de cadastro-->
-	<form name="dados" action="http:127.0.0.1/processa.php" method="POST">
+	<form name="dados" action="http:127.0.0.1/processa.php" method="POST" enctype="multipart/form-data">
 	<fieldset id="cadastro-lixo"><legend>Cadastro Lixo</legend>
 
 		<!-- mensagem de aviso -->
@@ -56,30 +56,7 @@
 		<!--upload de foto-->
 		<div>
 			<label for="foto-lixo" class="obrigatorio">Foto do lixo:</label>
-			<input type="file" id="files" name="files[]" multiple/>
-			<output id="list"></output><br><br>
-			<!--<script type="text/javascript">
-				 function readSingleFile(e) {
-				  var file = e.target.files[0];
-				  if (!file) {
-				    return;
-				  }
-				  var reader = new FileReader();
-				  reader.onload = function(e) {
-				    var contents = e.target.result;
-				    displayContents(contents);
-				  };
-				  reader.readAsText(file);
-				}
-
-				/*function displayContents(contents) {
-				  var element = document.getElementById('file-content');
-				  element.textContent = contents;
-				}
-
-				document.getElementById('file-input')
-				  .addEventListener('change', readSingleFile, false);*/
-			</script>-->
+			<input type="file" id="foto_lixo" name="foto_lixo" accept=".png, .jpeg, .jpg, .bmp" /><br><br>
 		</div>
 
 		<!-- logradouro -->
