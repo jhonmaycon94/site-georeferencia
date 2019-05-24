@@ -2,7 +2,14 @@
   //inclui a conexão '$conn' do arquivo 'conexão.php'
   include_once('conexao.php');
 
-  //Declaração de variáveis
+  $name = $_FILES['foto_lixo']['name'];
+  $temp = $_FILES['foto_lixo']['tmp_name'];
+  $type = $_FILES['foto_lixo']['type'];
+
+  if (($type == "image/jpeg") || ($type == "image/jpg") || ($type == "image/png") || ($type == "image/btmp")){
+    move_uploaded_file($temp, "imagens/$name");
+
+    //Declaração de variáveis
   $latitude = filter_input(INPUT_POST, 'latitude');
   $longitude = filter_input(INPUT_POST, 'longitude');
   $logradouro = filter_input(INPUT_POST, 'logradouro');
@@ -17,12 +24,12 @@
   //cadastra query no banco de dados
   $resultado = mysqli_query($conn, $sql_query);
 
-  $name = $_FILES['foto_lixo']['name'];
-  $temp = $_FILES['foto_lixo']['tmp_name'];
-  $type = $_FILES['foto_lixo']['type'];
+     //redireciona página para view.php
+      header('Location: view.php');
+  }
 
-  move_uploaded_file($temp, "imagens/$name");
-
- //redireciona página para view.php
-  header('Location: view.php');
+  else{
+    echo "o tipo $type não é um tipo válido! escolha um tipo válido!";
+  }
+  
 ?>
