@@ -1,122 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-	<title>cadastro do lixo</title>
-	
-	<meta charset="utf-8">
-	
-	<!-- carregando os estilos-->
-	<link rel="stylesheet" type="text/css" href="_css/estilo.css">
-	<link rel="stylesheet" type="text/css" href="_css/cadastro.css">
-	
-	<link rel="icon" type="image/png" href="_imagens/brasao-prefeitura.png">
-	
-	<script type="text/javascript" src="_js/validaCampo.js"></script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>cadastro do lixo</title>
 
+<!--carregando dependencias-->
+  <link rel="stylesheet" type="text/css" href="_css/cadastro.css"/>
+  <link rel="icon" type="image/png" href="_imagens/brasao-prefeitura.png"/>
+  <script type="text/javascript" src="_js/validaCampo.js"></script>
 </head>
 <body>
-	<div id="principal">
+<div id="principal">
 
-	<!-- cabeçalho-->	
-	<header id="cabecalho">
-		<img src="_imagens/brasao-prefeitura.png" alt="Brasão do portal da prefeitura de Estância">
-		<h1>Orgão de Saneamento Ambiental</h1> 
-		<p id="utf_prefeitura"></p>
-		<nav id="menu">
-			<ul>
-				<li><a href="home.html">Página Inicial</a></li>
-				<li><a href="cadastro.html">Cadastro</a></li>
-				<li><a href="http:127.0.0.1/view.php">Visualização</a></li>
-			</ul>
-		</nav>
-	</header>
+<!--cabeçalho-->	
+  <header id="cabecalho">
+  <img src="_imagens/brasao-prefeitura.png" alt="Brasão do portal da prefeitura de Estância">
+  <h1>Orgão de Saneamento Ambiental</h1> 
+  <p id="utf_prefeitura"></p>
+  <nav id="menu">
+  <ul>
+    <li><a href="home.html">Página Inicial</a></li>
+    <li><a href="cadastro.html">Cadastro</a></li>
+    <li><a href="http:127.0.0.1/view.php">Visualização</a></li>
+  </ul>
+  </nav>
+  </header>
 
-	<!-- mapa-->
-	<div id="map"></div>
-   	  <script src="_js/carregaMapa.js"></script>
-      <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdXuxCij3QqLOBXD3037howmfqaH2cXWE&callback=initMap">
-      </script>
-	
-	<!--formulário de cadastro-->
-	<form name="dados" action="http:127.0.0.1/processa.php" method="POST" enctype="multipart/form-data">
-	<fieldset id="cadastro-lixo"><legend>Cadastro Lixo</legend>
+<!--mapa-->
+  <div id="map"></div>
+  <script src="_js/carregaMapa.js"></script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdXuxCij3QqLOBXD3037howmfqaH2cXWE&callback=initMap">
+  </script>
 
-		<!-- mensagem de aviso -->
-	<p id="aviso">Os campos com <em>*</em> são obrigatórios!</p>
-		
-		<!--campo de coordenadas-->
-		<div>
-			<label for="latitude" class="obrigatorio">Latitude:</label>
-			<input type="text" id="latitude" size="10" name="latitude" >
-			<label for="longitude" class="obrigatorio">Longitude:</label>
-			<input type="text" id="longitude" size="10" name="longitude" ><br><br>
-		</div>
+<!--formulário de cadastro-->
+  <form name="dados" action="http:127.0.0.1/processa.php" method="POST" enctype="multipart/form-data">
+  <fieldset id="cadastro-lixo"><legend>Cadastro Lixo</legend>
+<!--mensagem de aviso-->
+  <p id="aviso">Os campos com <em>*</em> são obrigatórios!</p>
+<!--campo de coordenadas-->
+  <div>
+  <label for="latitude" class="obrigatorio">Latitude:</label>
+  <input type="text" id="latitude" size="10" name="latitude" >
+  <label for="longitude" class="obrigatorio">Longitude:</label>
+  <input type="text" id="longitude" size="10" name="longitude" ><br/><br/>
+  </div>
+<!--upload de foto-->
+  <div>
+  <label for="foto-lixo" class="obrigatorio">Foto do lixo:</label>
+  <input type="file" id="foto_lixo" name="foto_lixo" accept=".png, .jpeg, .jpg, .bmp"/><br/><br/>
+  </div>
+<!--logradouro -->
+  <div>
+  <label for="logradouro" class="obrigatorio">Logradouro:</label>
+  <input type="text" name="logradouro" id="logradouro" size="30" maxlength="50" placeholder="Rua, Avenida, Travessa..."><br/><br/>
+  </div>
+<!--numero-->
+  <div>
+  <label for="numero">Número:</label>
+  <input type="text" name="numero" id="numero" maxlength="10" size="5"><br/><br/>
+  </div>
+<!--bairro -->
+  <div>
+  <label for="bairro" class="obrigatorio">Bairro:</label>
+  <input type="text" name="bairro" id="bairro" size="20" maxlength="30"><br/><br/>
+  </div>
+<!--CEP-->
+  <div>
+  <label for="cep">CEP:</label>
+  <input type="text" name="cep" id="cep" maxlength="20" size="10" value="49200-000" readonly="true" class="unico"><br/><br/>
+  </div>
+<!--cidade-->
+  <div>
+  <label for="cidade">Cidade:</label>
+  <select id="cidade" class="unico">
+    <option>Estância</option>
+  </select><br/><br/>
+  </div>
+<!--estado-->
+  <div>
+  <label for="estado">Estado:</label>
+  <select id="estado" class="unico">
+    <option>Sergipe</option>
+  </select><br/><br/>
+  </div>
+<!--campo de descrição-->
+  <div>
+  <label for="descricao" id="lb_textArea">Descrição:</label>
+  <textarea id="descricao" name="descricao" rows="5" cols="35" placeholder="Descreva aqui sobre a situação do lixo" maxlength="140">
+  </textarea><br/><br/>
+  </div>
+<!--botão-->
+  <div class="button">
+  <button type="submit" onclick="return validaCampo()">Cadastrar</button>
+  </div>
+  </fieldset>
+  </form>
+<!--rodapé-->
 
-		<!--upload de foto-->
-		<div>
-			<label for="foto-lixo" class="obrigatorio">Foto do lixo:</label>
-			<input type="file" id="foto_lixo" name="foto_lixo" accept=".png, .jpeg, .jpg, .bmp" /><br><br>
-		</div>
-
-		<!-- logradouro -->
-		<div>
-			<label for="logradouro" class="obrigatorio">Logradouro:</label>
-			<input type="text" name="logradouro" id="logradouro" size="30" maxlength="50" placeholder="Rua, Avenida, Travessa..."><br><br>
-		</div>
-
-		<!--numero-->
-		<div>
-			<label for="numero">Número:</label>
-			<input type="text" name="numero" id="numero" maxlength="10" size="5"><br><br>
-		</div>
-
-		<!-- Bairro -->
-		<div>
-			<label for="bairro" class="obrigatorio">Bairro:</label>
-			<input type="text" name="bairro" id="bairro" size="20" maxlength="30"><br><br>
-		</div>
-
-		<!-- CEP -->
-		<div>
-			<label for="cep">CEP:</label>
-			<input type="text" name="cep" id="cep" maxlength="20" size="10" value="49200-000" readonly="true" class="unico"><br><br>
-		</div>
-
-		<!-- Cidade -->
-		<div>
-			<label for="cidade">Cidade:</label>
-				<select id="cidade" class="unico">
-					<option>Estância</option>
-				</select><br><br>
-		</div>
-
-		<!-- Estado -->
-		<div>
-			<label for="estado">Estado:</label>
-			<select id="estado" class="unico">
-				    <option>Sergipe</option>
-			</select><br><br>
-		</div>
-
-		<!-- campo de descrição-->
-		<div>
-			<label for="descricao" id="lb_textArea">Descrição:</label>
-			<textarea id="descricao" name="descricao" rows="5" cols="35" placeholder="Descreva aqui sobre a situação do lixo" maxlength="140"></textarea><br><br>
-		</div>
-
-		<!-- botão -->
-		<div class="button">
-			<button type="submit" onclick="return validaCampo()">Cadastrar</button>
-		</div>
-
-	</fieldset>
-	</form>
-
-	<!--rodapé-->
-	<footer id="rodape">
-		<p>&copy; Copyright 2019 - by Jhon Maycon</p> 
-	</footer>
-
+<footer id="rodape">
+  <p>&copy; Copyright 2019 - by Jhon Maycon</p> 
+</footer>
 </div>
 </html>
