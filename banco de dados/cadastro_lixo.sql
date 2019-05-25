@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 19-Maio-2019 às 02:51
+-- Generation Time: 24-Maio-2019 às 15:34
 -- Versão do servidor: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -37,17 +37,17 @@ CREATE TABLE `cadastro_lixo` (
   `bairro` varchar(20) NOT NULL,
   `cep` varchar(20) NOT NULL,
   `cidade` varchar(20) NOT NULL,
-  `estado` varchar(15) NOT NULL
+  `estado` varchar(15) NOT NULL,
+  `descricao` varchar(140) DEFAULT NULL,
+  `foto` varchar(140) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `cadastro_lixo`
 --
 
-INSERT INTO `cadastro_lixo` (`id`, `latitude`, `longitude`, `logradouro`, `numero`, `bairro`, `cep`, `cidade`, `estado`) VALUES
-(1, -11.266839, -37.431694, 'Rua São Caetano', '459', 'Centro', '49200000', 'Estância', 'Sergipe'),
-(2, -11.236016, -37.422535, 'Rua João Café Filho', '264', 'Cidade Nova', '49200000', 'Estância', 'Sergipe'),
-(3, -11.254859, -37.433182, 'Rua João Passos de Souza', 'S/N', 'Alagoas', '49200000', 'Estância', 'Sergipe');
+INSERT INTO `cadastro_lixo` (`id`, `latitude`, `longitude`, `logradouro`, `numero`, `bairro`, `cep`, `cidade`, `estado`, `descricao`, `foto`) VALUES
+(8, -11.236708, -37.431694, 'Rua São Caetano', '459', 'Centro', '49200-000', 'Estância', 'Sergipe', 'gfg', 'imagens/COLORIDO PNG LOGO GIL.png');
 
 --
 -- Indexes for dumped tables
@@ -67,7 +67,7 @@ ALTER TABLE `cadastro_lixo`
 -- AUTO_INCREMENT for table `cadastro_lixo`
 --
 ALTER TABLE `cadastro_lixo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

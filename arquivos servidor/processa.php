@@ -1,34 +1,36 @@
 <?php
   //inclui a conexão '$conn' do arquivo 'conexão.php'
-  include_once('conexao.php');	
+  include_once('conexao.php');
 
-  //Declaração de variáveis
+  $name = $_FILES['foto_lixo']['name'];
+  $temp = $_FILES['foto_lixo']['tmp_name'];
+  $type = $_FILES['foto_lixo']['type'];
+
+  if (($type == "image/jpeg") || ($type == "image/jpg") || ($type == "image/png") || ($type == "image/btmp")){
+    move_uploaded_file($temp, "imagens/$name");
+
+    //Declaração de variáveis
   $latitude = filter_input(INPUT_POST, 'latitude');
   $longitude = filter_input(INPUT_POST, 'longitude');
   $logradouro = filter_input(INPUT_POST, 'logradouro');
   $numero = filter_input(INPUT_POST, 'numero');
   $bairro = filter_input(INPUT_POST, 'bairro');
   $cep = filter_input(INPUT_POST, 'cep');
-
-  //teste para checar os valores que as variáveis estão recebendo!
-  
-  /*echo "latitude: $latitude <br>";
-  echo "longitude: $longitude <br>";
-  echo "rua: $logradouro <br>";
-  echo "numero: $numero <br>";
-  echo "bairro: $bairro <br>";
-  echo "cep: $cep <br>";*/
+  $descricao = filter_input(INPUT_POST, 'descricao');
+  $foto_path = "imagens/$name";
 
   //query para inserir no banco de dados
-  $sql_query = "INSERT INTO cadastro_lixo(latitude, longitude, logradouro, numero, bairro, cidade, cep, estado) VALUES ('$latitude','$longitude','$logradouro','$numero','$bairro', 'Estância', '$cep', 'Sergipe')";
+  $sql_query = "INSERT INTO cadastro_lixo(latitude, longitude, logradouro, numero, bairro, cidade, cep, estado, descricao, foto) VALUES ('$latitude','$longitude','$logradouro','$numero','$bairro', 'Estância', '$cep', 'Sergipe', '$descricao','$foto_path')";
   
   //cadastra query no banco de dados
   $resultado = mysqli_query($conn, $sql_query);
 
-  //redireciona o navegador para 'view.php'
-  if(mysql_insert_id($conn)){
-    header("Location: view.php");
-  }else{
-    header("Location: view.php");
+     //redireciona página para view.php
+      header('Location: view.php');
   }
+
+  else{
+    echo "o tipo $type não é um tipo válido! escolha um tipo válido!";
+  }
+  
 ?>
