@@ -56,6 +56,8 @@
               var infowincontent = document.createElement('div');
               var foto = document.createElement('img');
               foto.src = foto_caminho;
+              foto.style.width="300px";
+              foto.style.height="200px";
               infowincontent.appendChild(foto);
               infowincontent.appendChild(document.createElement('br'));
 
